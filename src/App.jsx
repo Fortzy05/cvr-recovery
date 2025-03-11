@@ -1,12 +1,14 @@
-import "./App.css";
+import React from "react";
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Booking from "./pages/Booking";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <main className="flex justify-center items-center flex-col">
-      <h1 className="text-4xl">CVR Recovery</h1>
-    </main>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/booking" element={<Booking />} />
+    </Routes>
   );
 }
 
