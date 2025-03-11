@@ -2,30 +2,38 @@ import React from "react";
 
 const services = [
   {
-    title: "Breakdown Recovery",
-    description: "24/7 roadside assistance and vehicle recovery.",
+    title: "Car Recovery",
+    description: "Fast and reliable car recovery services 24/7.",
   },
   {
-    title: "Towing Services",
+    title: "Vehicle Towing",
     description: "Safe towing for all types of vehicles.",
   },
   {
-    title: "Vehicle Transport",
-    description: "Long-distance vehicle transport solutions.",
+    title: "Spare Wheel Change",
+    description: "On-the-spot wheel replacement for breakdowns.",
   },
   {
-    title: "Home & Commercial Removals",
-    description: "Fast and efficient moving services.",
+    title: "Fuel Assistance",
+    description: "Ran out of fuel? We can refuel you on-site.",
+  },
+  {
+    title: "Breakdown Recovery",
+    description: "Roadside assistance when you need it the most.",
+  },
+  {
+    title: "Long-Distance Transport",
+    description: "Efficient vehicle transportation services.",
   },
 ];
 
-function ServiceList() {
+function ServicesSection() {
   return (
     <div className="container mx-auto py-12 px-6">
       <h2 className="text-3xl font-bold text-center text-gray-800">
         Our Services
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 ">
         {services.map((service, index) => (
           <div
             key={index}
@@ -42,4 +50,4 @@ function ServiceList() {
   );
 }
 
-export default ServiceList;
+export default ServicesSection;

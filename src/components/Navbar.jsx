@@ -23,16 +23,22 @@ function Navbar() {
             Home
           </Link>
           <Link
-            to="/booking"
+            to="/services"
             className="block py-2 px-4 hover:bg-blue-800 rounded"
           >
-            Book a Service
+            Services
           </Link>
           <Link
-            to="/dashboard"
+            to="/gallery"
             className="block py-2 px-4 hover:bg-blue-800 rounded"
           >
-            Dashboard
+            Gallery
+          </Link>
+          <Link
+            to="/contact"
+            className="block py-2 px-4 hover:bg-blue-800 rounded"
+          >
+            Contact
           </Link>
         </div>
       </div>
