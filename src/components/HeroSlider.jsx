@@ -17,9 +17,9 @@ function HeroSlider() {
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
-      autoplay={{ delay: 3000 }}
+      autoplay={{ delay: 5000 }}
       pagination={{ clickable: true }}
-      className="w-full h-80 md:h-[500px]"
+      className="w-full h-80 md:h-[600px]"
     >
       {heroImages.map((image, index) => (
         <SwiperSlide key={index}>
