@@ -4,15 +4,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import HeroSection from "./HeroSection";
+import hero1 from "../assets/hero1.jpg";
+import hero2 from "../assets/hero2.jpg";
+import hero3 from "../assets/hero3.jpg";
+import hero4 from "../assets/hero4.jpg";
+import hero5 from "../assets/hero5.jpg";
+import hero6 from "../assets/hero6.jpg";
 
-const heroImages = [
-  "/src/assets/hero1.jpg",
-  "/src/assets/hero2.jpg",
-  "/src/assets/hero3.jpg",
-  "/src/assets/hero4.jpg",
-  "/src/assets/hero5.jpg",
-  "/src/assets/hero6.jpg",
-];
+const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6];
 
 function HeroSlider() {
   return (
