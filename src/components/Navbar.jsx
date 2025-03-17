@@ -5,8 +5,8 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#000000] text-white p-4 shadow-lg relative">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-slate-600 text-white p-4 shadow-lg relative">
+      <div className="container px-8 mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl tracking-tighter font-serif font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
           Edline Auto Ltd
@@ -24,7 +24,7 @@ function Navbar() {
             <Link
               key={name}
               to={path}
-              className="relative text-nowrap py-2 px-4 rounded-lg transition-all duration-300 group w-full block"
+              className="relative text-nowrap py-2 px-4  transition-all duration-300 group w-full block hover:bg-slate-900"
             >
               {name}
               <span className="absolute left-0 top-0 h-full w-0 bg-[#3b82f6] transition-all duration-300 group-hover:w-full -z-10"></span>

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center text-white text-center px-4 bg-black/25">
+    <div className="w-full h-full flex flex-col items-center justify-center text-white text-center px-4 bg-black/30">
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
         Fast & Reliable Vehicle Recovery
       </h1>
-      <p className="text-sm sm:text-lg mt-3 sm:mt-4 font-medium sm:font-bold max-w-md">
+      <p className="text-sm sm:text-lg mt-3 sm:mt-4 font-medium sm:font-bold max-w-lg">
         24/7 Emergency Assistance | Towing | Transport | Removals
       </p>
       <Link
