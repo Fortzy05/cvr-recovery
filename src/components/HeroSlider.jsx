@@ -23,14 +23,14 @@ function HeroSlider() {
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000 }}
         pagination={{ clickable: true }}
-        className="w-full h-80 md:h-[600px] "
+        className="w-full h-80 md:h-[463px] "
       >
         {heroImages.map((image, index) => (
           <SwiperSlide key={index}>
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           </SwiperSlide>
         ))}
