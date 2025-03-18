@@ -53,7 +53,7 @@ function Gallery() {
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto py-12 px-6 bg-gray-100">
+      <div className="container mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Gallery
         </h2>

@@ -29,26 +29,24 @@ const services = [
 
 function ServicesSection() {
   return (
-    <div className="container mx-auto">
-      {/* Experience & Trust Section */}
-      <div className="bg-slate-600 w-full h-[110px] py-6 flex flex-col sm:flex-row justify-center items-center text-center sm:text-left">
-        <div className="text-white uppercase font-semibold flex flex-col sm:flex-row items-center gap-6">
-          <p className="text-lg sm:text-xl md:text-2xl">
-            15 Years of Experience
-          </p>
-          <div className="hidden sm:block border-l-[2px] h-10"></div>
-          <p className="text-lg sm:text-xl md:text-2xl">Professional</p>
-          <div className="hidden sm:block border-l-[2px] h-10"></div>
-          <p className="text-lg sm:text-xl md:text-2xl">Open 24/7</p>
-        </div>
+    <div className="w-full overflow-hidden">
+      {/* Info Section */}
+      <div className="bg-slate-600 w-full py-6 flex flex-col md:flex-row items-center justify-center gap-6 text-white text-center">
+        <p className="text-lg sm:text-xl font-semibold">
+          15 Years of Experience
+        </p>
+        <div className="hidden md:block border-l border-white h-10"></div>
+        <p className="text-lg sm:text-xl font-semibold">Professional</p>
+        <div className="hidden md:block border-l border-white h-10"></div>
+        <p className="text-lg sm:text-xl font-semibold">Open 24/7</p>
       </div>
 
       {/* Services Grid */}
-      <div className="py-12">
+      <div className="py-10 px-4 md:px-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800">
           Our Services
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={index}
