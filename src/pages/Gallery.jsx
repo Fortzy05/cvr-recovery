@@ -53,12 +53,12 @@ function Gallery() {
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
+      <div className="  mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Gallery
         </h2>
-        <p className="text-center text-gray-600 mt-2">
-          Browse through our completed tow jobs.
+        <p className="text-center md:text-2xl text-gray-600 mt-2">
+          Browse Through Our Completed Vehicle Recovery Jobs.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {galleryItems.map((item) => (

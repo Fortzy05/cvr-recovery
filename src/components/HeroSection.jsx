@@ -23,7 +23,7 @@ function HeroSection() {
           Get Assistance Now
         </Link>
         <a
-          href="tel:+1234567890"
+          href="tel:+44 7407 207196"
           className="bg-green-500 text-white w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-green-400 transition-all duration-300"
         >
           Call Now

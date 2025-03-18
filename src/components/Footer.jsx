@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
       <FooterSection />
-      <div className="bg-[#000000] text-white text-center p-4">
+      <div className="bg-[#000000] overflow-hidden text-white text-center p-4">
         <p>
           &copy; 2025 Vehicle Recovery Services |{" "}
           <a href="/privacy" className="underline">
