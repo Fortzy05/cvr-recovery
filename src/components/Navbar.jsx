@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <nav className="bg-slate-600 text-white p-4 shadow-lg relative">
-      <div className="container px-8 mx-auto flex justify-between items-center">
+      <div className="container md:px-8 px-2 mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl tracking-tighter font-serif font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
           Edline Auto Ltd
@@ -34,7 +34,7 @@ function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white text-2xl"
+          className="md:hidden text-white text-3xl"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? "✕" : "☰"}

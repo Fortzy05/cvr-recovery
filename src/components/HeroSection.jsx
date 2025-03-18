@@ -3,19 +3,38 @@ import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center text-white text-center px-4 bg-black/30">
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight">
+    <div className="w-full h-[463px] flex flex-col items-center justify-center text-white text-center px-4 sm:px-6 md:px-8 bg-black/40">
+      {/* Main Heading */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-[90%] md:max-w-3xl">
         Fast & Reliable Vehicle Recovery
       </h1>
-      <p className="text-sm sm:text-lg mt-3 sm:mt-4 font-medium sm:font-bold max-w-lg">
+
+      {/* Subtext */}
+      <p className="text-base sm:text-lg md:text-xl mt-3 sm:mt-4 font-medium max-w-[90%] md:max-w-2xl">
         24/7 Emergency Assistance | Towing | Transport | Removals
       </p>
-      <Link
-        to="/booking"
-        className="mt-5 sm:mt-6 bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-400 transition-all duration-300"
-      >
-        Get Assistance Now
-      </Link>
+
+      {/* Buttons */}
+      <div className="mt-6 flex flex-col sm:flex-row gap-4 w-full max-w-xs sm:max-w-lg">
+        <Link
+          to="/booking"
+          className="bg-yellow-500 text-gray-900 w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-yellow-400 transition-all duration-300"
+        >
+          Get Assistance Now
+        </Link>
+        <a
+          href="tel:+1234567890"
+          className="bg-green-500 text-white w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-green-400 transition-all duration-300"
+        >
+          Call Now
+        </a>
+        {/* <a
+          href="https://wa.me/447407207196"
+          className="bg-blue-500 text-white w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-blue-400 transition-all duration-300"
+        >
+          Send a Message
+        </a> */}
+      </div>
     </div>
   );
 }
