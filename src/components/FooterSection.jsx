@@ -9,10 +9,7 @@ export default function FooterSection() {
           <h1 className="uppercase text-2xl mb-4">Our Contact</h1>
           <div className="space-y-3">
             {/* Email */}
-            <a
-              href="mailto:Edline24/7ltd@gmail.com"
-              className="flex items-center gap-2 hover:text-gray-300"
-            >
+            <div className="flex items-center gap-2 hover:text-gray-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
@@ -23,13 +20,10 @@ export default function FooterSection() {
                 <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
               </svg>
               <span>Edline24/7ltd@gmail.com</span>
-            </a>
+            </div>
 
             {/* Phone */}
-            <a
-              href="tel:+447407207196"
-              className="flex items-center gap-2 hover:text-gray-300"
-            >
+            <div className="flex items-center gap-2 hover:text-gray-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
@@ -40,7 +34,7 @@ export default function FooterSection() {
                 <path d="M796-120q-119 0-240-55.5T333-333Q231-435 175.5-556T120-796q0-18.86 12.57-31.43T164-840h147.33q14 0 24.34 9.83Q346-820.33 349.33-806l26.62 130.43q2.05 14.9-.62 26.24-2.66 11.33-10.82 19.48L265.67-530q24 41.67 52.5 78.5T381-381.33q35 35.66 73.67 65.5Q493.33-286 536-262.67l94.67-96.66q9.66-10.34 23.26-14.5 13.61-4.17 26.74-2.17L806-349.33q14.67 4 24.33 15.53Q840-322.27 840-308v144q0 18.86-12.57 31.43T796-120Z" />
               </svg>
               <span>+44 7407 207196</span>
-            </a>
+            </div>
           </div>
         </div>
 

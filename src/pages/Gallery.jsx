@@ -51,7 +51,7 @@ const galleryItems = [
 
 function Gallery() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar />
       <div className="  mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
         <h2 className="text-3xl font-bold text-center text-gray-800">
