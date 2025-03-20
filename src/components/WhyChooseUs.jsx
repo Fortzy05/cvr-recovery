@@ -15,7 +15,7 @@ const whyChooseUs = [
 
 function WhyChooseUs() {
   return (
-    <div className="container mx-auto py-12">
+    <div className="mx-auto py-12 bg-gray-100">
       <h2 className="text-3xl font-bold text-center text-gray-800">
         Why Choose Us?
       </h2>

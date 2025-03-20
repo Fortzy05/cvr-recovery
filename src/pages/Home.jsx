@@ -6,17 +6,21 @@ import Footer from "../components/Footer";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
+import Qoute from "../components/Qoute";
+import Cta from "../components/Cta";
 function Home() {
   return (
-    <div className="overflow-x-hidden">
+    <main className="overflow-x-hidden">
       <Navbar />
       <HeroSlider />
       <ServiceSection />
+      <Cta/>
+      <Qoute/>
       <WhyChooseUs />
       <Testimonials />
       <CallToAction />
       <Footer />
-    </div>
+    </main>
   );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 const testimonials = [
   {
-    name: "John Doe",
+    name: "John ",
     review:
       "Fantastic service! They arrived within 20 minutes and got my car back on the road.",
   },
@@ -19,7 +19,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <div className="container mx-auto py-12 bg-gray-100">
+    <div className="mx-auto py-12 bg-gray-100">
       <h2 className="text-3xl font-bold text-center text-gray-800">
         What Our Customers Say
       </h2>
