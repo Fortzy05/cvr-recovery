@@ -19,7 +19,7 @@ const carsForSale = [
 
 function CarSales() {
   return (
-    <div className="container mx-auto py-12 px-6">
+    <div className="mx-auto py-12 px-6">
       <h2 className="text-3xl font-bold text-center text-gray-800">
         Cars for Sale
       </h2>

@@ -50,7 +50,7 @@ const galleryItems = [
 
 function Gallery() {
   return (
-    <div className="  mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
+    <div className="mx-auto py-12 px-6 bg-gray-100 overflow-hidden">
       <h2 className="text-3xl font-bold text-center text-gray-800">Gallery</h2>
       <p className="text-center md:text-2xl text-gray-600 mt-2">
         Browse Through Our Completed Vehicle Recovery Jobs.

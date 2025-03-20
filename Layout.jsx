@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       <Navbar /> {/* Add Navbar if you have one */}
       <main className="flex-grow">
         <Outlet /> {/* This will render the current page */}

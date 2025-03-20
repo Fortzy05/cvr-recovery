@@ -28,7 +28,7 @@ const services = [
 ];
 export default function Services() {
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <h2 className="text-3xl font-bold text-center text-gray-800">
         Our Services
       </h2>
