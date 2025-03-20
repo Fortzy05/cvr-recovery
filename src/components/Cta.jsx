@@ -1,5 +1,5 @@
 import React from "react";
-import hero7 from "../assets/hero17.jpg";
+import hero17 from "../assets/hero17.jpg";
 
 export default function Cta() {
   return (
@@ -19,16 +19,18 @@ export default function Cta() {
 
           {/* Centered Button */}
           <div className="flex justify-center md:justify-start">
-            <button className="bg-slate-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105">
-              CALL NOW
-            </button>
+            <a href="tel:+44 7407 207196">
+              <button className="bg-slate-600 text-white px-8 py-3 rounded-full shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105">
+                CALL NOW
+              </button>
+            </a>
           </div>
         </div>
 
         {/* Image Section */}
         <div className="w-full md:w-1/2">
           <img
-            src={hero7}
+            src={hero17}
             alt="cta image"
             className="w-full h-auto rounded-lg shadow-xl object-cover"
           />
