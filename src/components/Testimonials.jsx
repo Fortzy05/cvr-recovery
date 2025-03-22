@@ -2,7 +2,7 @@ import React from "react";
 
 const testimonials = [
   {
-    name: "John ",
+    name: "John Doe",
     review:
       "Fantastic service! They arrived within 20 minutes and got my car back on the road.",
   },

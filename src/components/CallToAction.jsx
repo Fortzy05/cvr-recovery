@@ -34,7 +34,7 @@ function CallToAction() {
       {/* Button - Full width on small screens */}
       <a
         href="tel:+44 7407 207196"
-        className="mt-6 inline-block w-full sm:w-auto bg-gray-900 text-yellow-500 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition-all duration-300 shadow-lg"
+        className="mt-6 inline-block w-full sm:w-auto bg-slate-700 text-yellow-500 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-700 transition-all duration-300 shadow-lg"
       >
         📞 Call Now: +44 7407 207196
       </a>

@@ -1,0 +1,24 @@
+import React, { useContext } from "react";
+import { ScrollContext } from "../context/ScrollContext";
+import { ArrowUp } from "lucide-react";
+
+const ScrollToTopButton = () => {
+  const { isVisible } = useContext(ScrollContext);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-6 right-6 p-3 rounded-full bg-slate-600 text-slate-100 shadow-lg hover:bg-slate-400 transition-all duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <ArrowUp size={24} />
+    </button>
+  );
+};
+
+export default ScrollToTopButton;
