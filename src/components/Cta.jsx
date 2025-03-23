@@ -11,8 +11,10 @@ export default function Cta() {
             Reliable Vehicle Recovery & Transport
           </h1>
           <p className="text-lg text-gray-700">
-            Edline Auto Services is always ready to assist. Quick, professional,
-            and available 24/7!
+            Autosales Logistics is always ready to assist.
+          </p>
+          <p className="text-lg text-gray-700">
+            Quick, professional, and available 24/7!
           </p>
           <p className="text-lg font-semibold text-gray-800">
             Get your FREE quote today!
