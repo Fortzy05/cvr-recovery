@@ -1,16 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const validateField = (name, value) => {
+    let errorMsg = "";
+
+    if (name === "name" && value.length < 3) {
+      errorMsg = "Name must be at least 3 characters";
+    }
+    if (name === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      errorMsg = "Enter a valid email";
+    }
+    if (name === "message" && value.length < 10) {
+      errorMsg = "Message must be at least 10 characters";
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Validate as user types
+    validateField(name, value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validate all fields before submitting
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+
+    // Check for errors
+    if (
+      Object.values(errors).some((error) => error) ||
+      Object.values(formData).some((val) => !val)
+    ) {
+      alert("Please fix errors before submitting.");
+      return;
+    }
+
+    console.log("Form submitted:", formData);
+    alert("Message sent successfully!");
+  };
+
   return (
     <div className="w-full">
       {/* Contact Section */}
       <div
         className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-12 bg-cover bg-center bg-no-repeat relative"
-        style={{
-          backgroundImage: "url('/hero8.jpg')",
-        }}
+        style={{ backgroundImage: "url('/hero8.jpg')" }}
       >
-        {/* Overlay to enhance readability */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/30"></div>
 
         {/* Content */}
@@ -22,26 +75,75 @@ const Contact = () => {
         {/* Form & Contact Info */}
         <div className="relative z-10 mt-10 w-full max-w-4xl grid gap-8 md:grid-cols-2">
           {/* Contact Form */}
-          <form className="bg-white p-6 shadow-md rounded-lg space-y-4">
+          <form
+            className="bg-white p-6 shadow-md rounded-lg space-y-4"
+            onSubmit={handleSubmit}
+          >
             <h2 className="text-2xl font-semibold text-gray-800">
               Send Us a Message
             </h2>
+
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Your Name"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.name
+                  ? "border-red-500"
+                  : "border-gray-300 focus:ring-yellow-500"
+              }`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
+
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Your Email"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.email
+                  ? "border-red-500"
+                  : "border-gray-300 focus:ring-yellow-500"
+              }`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
+
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               rows={4}
               placeholder="Your Message"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${
+                errors.message
+                  ? "border-red-500"
+                  : "border-gray-300 focus:ring-yellow-500"
+              }`}
             ></textarea>
-            <button className="w-full bg-yellow-500 text-gray-900 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition">
+            {errors.message && (
+              <p className="text-red-500 text-sm">{errors.message}</p>
+            )}
+
+            <button
+              type="submit"
+              className={`w-full bg-yellow-500 text-gray-900 py-3 rounded-lg font-semibold transition ${
+                Object.values(errors).some((error) => error) ||
+                Object.values(formData).some((val) => !val)
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "hover:bg-yellow-400"
+              }`}
+              disabled={
+                Object.values(errors).some((error) => error) ||
+                Object.values(formData).some((val) => !val)
+              }
+            >
               Send Message
             </button>
           </form>
