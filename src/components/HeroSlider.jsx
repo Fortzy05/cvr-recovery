@@ -16,21 +16,24 @@ const heroImages = [hero17, hero16, hero15, hero7, hero10, hero14];
 function HeroSlider() {
   return (
     <div className="relative">
-      <div className="absolute inset-0 flex items-center justify-center z-10">
+      {/* Hero Section Overlay */}
+      <div className="absolute inset-0 flex items-center justify-center z-10 w-full h-full">
         <HeroSection />
       </div>
+
+      {/* Swiper Background */}
       <Swiper
         modules={[Pagination, Autoplay]}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        className="w-full h-80 md:h-[463px] "
+        className="w-full h-[50vh] sm:h-[60vh] md:h-[463px]"
       >
         {heroImages.map((image, index) => (
           <SwiperSlide key={index}>
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover "
+              className="w-full h-full object-cover"
             />
           </SwiperSlide>
         ))}

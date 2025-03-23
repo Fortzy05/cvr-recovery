@@ -19,33 +19,41 @@ const carsForSale = [
 
 function CarSales() {
   return (
-    <div className="mx-auto py-12 px-6">
-      <h2 className="text-3xl font-bold text-center text-gray-800">
-        Cars for Sale
-      </h2>
-      <p className="text-center text-gray-600 mt-2">
-        Browse our available cars and find the perfect one for you.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-        {carsForSale.map((car) => (
-          <div
-            key={car.id}
-            className="bg-white p-4 shadow-lg rounded-lg text-center"
-          >
-            <img
-              src={car.image}
-              alt={car.name}
-              className="w-full h-48 object-cover rounded-md"
-            />
-            <h3 className="text-xl font-semibold text-gray-900 mt-2">
-              {car.name}
-            </h3>
-            <p className="text-lg text-blue-700 font-bold">{car.price}</p>
-            <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-              Inquire Now
-            </button>
-          </div>
-        ))}
+    <div
+      className="relative py-16 px-6 text-white bg-cover bg-center"
+      style={{ backgroundImage: "url('/car4.jpg')" }} // Add a relevant background image
+    >
+      {/* Overlay for better text contrast */}
+      <div className="absolute inset-0 bg-black/20"></div>
+
+      <div className="relative z-10 container mx-auto text-center">
+        <h2 className="text-4xl font-bold">Cars for Sale</h2>
+        <p className="text-lg mt-2 max-w-2xl mx-auto">
+          Browse our available cars and find the perfect one for you.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+          {carsForSale.map((car) => (
+            <div
+              key={car.id}
+              className="bg-white p-5 rounded-lg shadow-xl text-center transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src={car.image}
+                alt={car.name}
+                className="w-full h-52 object-cover rounded-md"
+              />
+              <h3 className="text-xl font-semibold text-gray-900 mt-3">
+                {car.name}
+              </h3>
+              <p className="text-lg text-blue-600 font-bold">{car.price}</p>
+
+              <button className="mt-4 px-5 py-3 bg-yellow-500 text-gray-900 rounded-lg font-semibold hover:bg-yellow-400 transition-all">
+                Inquire Now
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
