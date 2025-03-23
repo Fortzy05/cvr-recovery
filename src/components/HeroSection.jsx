@@ -24,7 +24,7 @@ function HeroSection() {
         </Link>
         <a
           href="tel:+44 7407 207196"
-          className="bg-slate-700 text-white w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-slate-800 transition-all duration-300"
+          className="bg-slate-600 text-white w-full text-center px-6 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-slate-800 transition-all duration-300"
         >
           Urgent? Call Now!
         </a>

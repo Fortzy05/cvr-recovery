@@ -5,15 +5,15 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-slate-600 text-white p-4 shadow-lg relative">
+    <nav className="bg-slate-600 md:h-[112px] h-24 flex items-center text-white p-4 shadow-lg relative">
       <div className="container md:px-8 px-2 mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl tracking-tighter font-serif font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
-          Edline Auto ltd
+          <img src="/logo8.svg" className="md:h-[150px] md:w-[160px] w-[120px] h-[120px] object-contain" alt="" />
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6 text-xl">
           {[
             { name: "Home", path: "/" },
             { name: "Services", path: "/services" },
@@ -43,7 +43,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute z-50 top-16 right-0 w-64 bg-slate-600 shadow-lg transition-transform duration-300 ${
+        className={`absolute z-50 top-16 right-0 w-64 bg-slate-600 shadow-lg text-xl transition-transform duration-300 ${
           isOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         } md:hidden`}
       >

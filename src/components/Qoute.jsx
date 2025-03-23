@@ -17,13 +17,56 @@ export default function Quote() {
     additionalInfo: "",
   });
 
+  const [errors, setErrors] = useState({
+    fullName: "",
+    phoneNumber: "",
+    serviceRequired: "",
+    additionalInfo: "",
+  });
+
+  const validateField = (name, value) => {
+    let errorMsg = "";
+
+    switch (name) {
+      case "fullName":
+        errorMsg =
+          value.length < 3 ? "Full name must be at least 3 characters" : "";
+        break;
+      case "phoneNumber":
+        errorMsg = /^\d{10,15}$/.test(value)
+          ? ""
+          : "Enter a valid phone number (10-15 digits)";
+        break;
+      case "serviceRequired":
+        errorMsg = value ? "" : "Please select a service";
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
+  };
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    validateField(name, value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+
+    if (
+      Object.values(errors).some((error) => error) ||
+      Object.values(formData).some((val) => !val)
+    ) {
+      alert("Please correct the errors before submitting.");
+      return;
+    }
+
     console.log("Form Data Submitted:", formData);
+    alert("Quote request submitted!");
   };
 
   return (
@@ -37,7 +80,6 @@ export default function Quote() {
         </p>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          {/* Full Name */}
           <div>
             <label className="block text-gray-700 font-medium">Full Name</label>
             <input
@@ -45,13 +87,17 @@ export default function Quote() {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none"
+              className={`w-full px-4 py-3 border ${
+                errors.fullName ? "border-red-500" : "border-gray-300"
+              } rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none`}
               placeholder="Enter your name"
               required
             />
+            {errors.fullName && (
+              <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+            )}
           </div>
 
-          {/* Phone Number */}
           <div>
             <label className="block text-gray-700 font-medium">
               Phone Number
@@ -61,13 +107,17 @@ export default function Quote() {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none"
+              className={`w-full px-4 py-3 border ${
+                errors.phoneNumber ? "border-red-500" : "border-gray-300"
+              } rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none`}
               placeholder="Enter your phone number"
               required
             />
+            {errors.phoneNumber && (
+              <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>
+            )}
           </div>
 
-          {/* Service Required */}
           <div>
             <label className="block text-gray-700 font-medium">
               Service Required
@@ -76,7 +126,9 @@ export default function Quote() {
               name="serviceRequired"
               value={formData.serviceRequired}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none"
+              className={`w-full px-4 py-3 border ${
+                errors.serviceRequired ? "border-red-500" : "border-gray-300"
+              } rounded-md focus:ring-2 focus:ring-slate-600 focus:outline-none`}
               required
             >
               <option value="">Select a service</option>
@@ -86,9 +138,13 @@ export default function Quote() {
                 </option>
               ))}
             </select>
+            {errors.serviceRequired && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.serviceRequired}
+              </p>
+            )}
           </div>
 
-          {/* Additional Info */}
           <div>
             <label className="block text-gray-700 font-medium">
               Additional Information
@@ -103,10 +159,18 @@ export default function Quote() {
             ></textarea>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-yellow-500 text-gray-900 py-3 rounded-md font-semibold hover:bg-yellow-400 transition-all"
+            disabled={
+              Object.values(errors).some((error) => error) ||
+              Object.values(formData).some((val) => !val)
+            }
+            className={`w-full bg-yellow-500 text-gray-900 py-3 rounded-md font-semibold transition-all ${
+              Object.values(errors).some((error) => error) ||
+              Object.values(formData).some((val) => !val)
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-yellow-400"
+            }`}
           >
             Request a Quote
           </button>

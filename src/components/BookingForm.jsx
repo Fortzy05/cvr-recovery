@@ -11,18 +11,85 @@ function BookingForm() {
     vehicleDetails: "",
   });
 
- const handleChange = (e) => {
-   setFormData({ ...formData, [e.target.name]: e.target.value });
- };
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    serviceType: "",
+    pickupLocation: "",
+    dropoffLocation: "",
+    vehicleDetails: "",
+  });
+
+  const validateField = (name, value) => {
+    let errorMsg = "";
+
+    switch (name) {
+      case "name":
+        errorMsg =
+          value.length < 3 ? "Full name must be at least 3 characters" : "";
+        break;
+      case "phone":
+        errorMsg = /^\d{10,15}$/.test(value)
+          ? ""
+          : "Enter a valid phone number (10-15 digits)";
+        break;
+      case "email":
+        errorMsg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+          ? ""
+          : "Enter a valid email";
+        break;
+      case "serviceType":
+        errorMsg = value ? "" : "Please select a service type";
+        break;
+      case "pickupLocation":
+        errorMsg = value.length < 3 ? "Pickup location is required" : "";
+        break;
+      case "dropoffLocation":
+        errorMsg = value.length < 3 ? "Dropoff location is required" : "";
+        break;
+      case "vehicleDetails":
+        errorMsg =
+          value.length < 10
+            ? "Provide at least 10 characters of vehicle details"
+            : "";
+        break;
+      default:
+        break;
+    }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // Validate field as user types
+    validateField(name, value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validate all fields before submitting
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+
+    // Check if any errors exist
+    if (
+      Object.values(errors).some((error) => error) ||
+      Object.values(formData).some((val) => !val)
+    ) {
+      alert("Please correct the errors before submitting.");
+      return;
+    }
+
     console.log("Booking Details:", formData);
     alert("Booking request submitted!");
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-8 shadow-lg rounded-lg mt-10">
+    <div className="max-w-lg mx-auto p-8 mt-10">
       <h2 className="text-2xl font-bold text-center text-slate-700">
         Request a Service
       </h2>
@@ -30,7 +97,7 @@ function BookingForm() {
         Fill in the details below to request towing or recovery services.
       </p>
 
-      <form className="mt-6" onSubmit={handleSubmit}>
+      <form className="mt-6 text-slate-700" onSubmit={handleSubmit}>
         <div className="space-y-4">
           {/** Full Name */}
           <div>
@@ -41,8 +108,13 @@ function BookingForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
+              className={`w-full px-4 py-2 border ${
+                errors.name ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
 
           {/** Phone Number */}
@@ -56,8 +128,13 @@ function BookingForm() {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
+              className={`w-full px-4 py-2 border ${
+                errors.phone ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
           </div>
 
           {/** Email */}
@@ -69,8 +146,13 @@ function BookingForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
+              className={`w-full px-4 py-2 border ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
 
           {/** Service Type */}
@@ -83,7 +165,9 @@ function BookingForm() {
               value={formData.serviceType}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
+              className={`w-full px-4 py-2 border ${
+                errors.serviceType ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
             >
               <option value="">Select Service</option>
               <option value="breakdown">Breakdown Recovery</option>
@@ -91,6 +175,9 @@ function BookingForm() {
               <option value="transport">Vehicle Transport</option>
               <option value="removals">Home/Commercial Removals</option>
             </select>
+            {errors.serviceType && (
+              <p className="text-red-500 text-sm mt-1">{errors.serviceType}</p>
+            )}
           </div>
 
           {/** Pickup Location */}
@@ -104,43 +191,30 @@ function BookingForm() {
               value={formData.pickupLocation}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
+              className={`w-full px-4 py-2 border ${
+                errors.pickupLocation ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
             />
-          </div>
-
-          {/** Dropoff Location */}
-          <div>
-            <label className="block text-gray-700 font-medium">
-              Dropoff Location
-            </label>
-            <input
-              type="text"
-              name="dropoffLocation"
-              value={formData.dropoffLocation}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
-            />
-          </div>
-
-          {/** Vehicle Details */}
-          <div>
-            <label className="block text-gray-700 font-medium">
-              Vehicle Details
-            </label>
-            <textarea
-              name="vehicleDetails"
-              value={formData.vehicleDetails}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-yellow-500 outline-none"
-            ></textarea>
+            {errors.pickupLocation && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.pickupLocation}
+              </p>
+            )}
           </div>
 
           {/** Submit Button */}
           <button
             type="submit"
-            className="w-full bg-slate-600 text-white py-3 rounded-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105"
+            disabled={
+              Object.values(errors).some((error) => error) ||
+              Object.values(formData).some((val) => !val)
+            }
+            className={`w-full py-3 rounded-lg font-semibold transition-all transform ${
+              Object.values(errors).some((error) => error) ||
+              Object.values(formData).some((val) => !val)
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-slate-600 text-white hover:bg-slate-700 hover:scale-105"
+            }`}
           >
             Submit Booking
           </button>
