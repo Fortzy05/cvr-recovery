@@ -154,7 +154,7 @@ const Contact = () => {
               Our Contact Details
             </h2>
             <p className="text-gray-700">📞 +44 7407 207196</p>
-            <p className="text-gray-700">📧 Edline24/7ltd@gmail.com</p>
+            <p className="text-gray-700">📧 Autosaleslogisticsltd@gmail.com</p>
             <p className="text-gray-700">
               📍 Birmingham, Walsall, Wolverhampton, Dudley, Coventry
             </p>
