@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <nav className="bg-slate-600 md:h-[112px] h-24 flex items-center text-white p-4 shadow-lg relative">
-      <div className="container md:px-8 px-2 mx-auto flex justify-between items-center">
+      <div className="container md:px-8 px-1 mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl tracking-tighter font-serif font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
           <img src="/logo8.svg" className="md:h-[150px] md:w-[160px] w-[120px] h-[120px] object-contain" alt="" />
