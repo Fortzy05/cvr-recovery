@@ -5,15 +5,15 @@ const carsForSale = [
     id: 1,
     name: "Toyota Corolla 2019",
     price: "£12,500",
-    image: "/images/car1.jpg",
+    image: "/corolla-2019.jpg",
   },
-  { id: 2, name: "BMW X5 2021", price: "£35,000", image: "/images/car2.jpg" },
-  { id: 3, name: "Audi A4 2020", price: "£22,000", image: "/images/car3.jpg" },
+  { id: 2, name: "BMW X5 2021", price: "£35,000", image: "/audi x5.jpg" },
+  { id: 3, name: "Audi A4 2020", price: "£22,000", image: "/Audi A4.jpg" },
   {
     id: 4,
     name: "Ford Fiesta 2018",
     price: "£9,800",
-    image: "/images/car4.jpg",
+    image: "/Ford fiesta.jpg",
   },
 ];
 
