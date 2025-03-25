@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
+
 
 export const ScrollContext = createContext();
 
@@ -17,6 +19,28 @@ export const ScrollProvider = ({ children }) => {
   return (
     <ScrollContext.Provider value={{ isVisible }}>
       {children}
+
+      {/* Floating Buttons (Always Visible) */}
+      <div className="fixed bottom-[90px] right-6 flex flex-col gap-3 z-50">
+        {/* WhatsApp Button */}
+        <a
+          href="https://wa.me/447407207196"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-all transform hover:scale-105"
+        >
+          <FaWhatsapp className="text-2xl" />
+        </a>
+
+        <a
+          href="tel:+447407207196"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-slate-600 text-white shadow-lg hover:bg-slate-700 transition-all transform hover:scale-105"
+        >
+          <FaPhoneAlt className="text-2xl" />
+        </a>
+      </div>
     </ScrollContext.Provider>
   );
 };
+
+  

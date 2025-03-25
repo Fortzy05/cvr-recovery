@@ -21,14 +21,18 @@ export default function Cta() {
             Get your FREE quote today!
           </p>
 
-          {/* Call Button with Animation */}
+          {/* Call Button with Bounce Effect */}
           <div className="flex justify-center md:justify-start">
             <a href="tel:+44 7407 207196">
               <motion.button
-                initial={{ x: 100, opacity: 0 }} // Start position (left)
-                animate={{ x: 0, opacity: 1 }} // End position (visible)
-                transition={{ duration: 2.0, ease: "easeOut" }} // Smooth animation
-                className="bg-slate-600 text-white px-8 py-3 rounded-lg shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105"
+                className="bg-slate-600 text-white px-8 py-3 rounded-lg shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all"
+                animate={{ y: [0, -10, 0] }} // Bounces once on mount
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 1.5,
+                }}
+                whileHover={{ scale: 1.1 }} // Slight pop effect on hover
               >
                 Call Now
               </motion.button>
