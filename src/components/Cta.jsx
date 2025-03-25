@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import hero17 from "../assets/hero17.jpg";
 
 export default function Cta() {
@@ -20,12 +21,17 @@ export default function Cta() {
             Get your FREE quote today!
           </p>
 
-          {/* Call Button */}
+          {/* Call Button with Animation */}
           <div className="flex justify-center md:justify-start">
             <a href="tel:+44 7407 207196">
-              <button className="bg-slate-600 text-white px-8 py-3 rounded-lg shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105">
+              <motion.button
+                initial={{ x: 100, opacity: 0 }} // Start position (left)
+                animate={{ x: 0, opacity: 1 }} // End position (visible)
+                transition={{ duration: 2.0, ease: "easeOut" }} // Smooth animation
+                className="bg-slate-600 text-white px-8 py-3 rounded-lg shadow-lg text-lg font-semibold hover:bg-slate-700 transition-all transform hover:scale-105"
+              >
                 Call Now
-              </button>
+              </motion.button>
             </a>
           </div>
         </div>
