@@ -2,7 +2,6 @@ import React from "react";
 
 import HeroSlider from "../components/HeroSlider";
 import ServiceSection from "../components/ServiceSection";
-
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
@@ -15,6 +14,7 @@ function Home() {
       <HeroSlider />
       <ServiceSection />
       <Cta />
+     
       <Qoute />
       <WhyChooseUs />
       <Testimonials />

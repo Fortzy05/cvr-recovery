@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -36,25 +37,38 @@ const Contact = () => {
     // Validate as user types
     validateField(name, value);
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate all fields before submitting
+    // Re-validate all fields before submission
     Object.keys(formData).forEach((key) => validateField(key, formData[key]));
 
-    // Check for errors
     if (
       Object.values(errors).some((error) => error) ||
       Object.values(formData).some((val) => !val)
     ) {
-      alert("Please fix errors before submitting.");
+      toast.error("Please fix the errors before submitting.");
       return;
     }
 
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error("Something went wrong");
+
+      toast.success("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("❌ Error submitting contact form:", error.message);
+      toast.error("Failed to send message. Please try again later.");
+    }
   };
+  
+  
 
   return (
     <div className="w-full">

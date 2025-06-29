@@ -21,7 +21,7 @@ export const ScrollProvider = ({ children }) => {
       {children}
 
       {/* Floating Buttons (Always Visible) */}
-      <div className="fixed bottom-[90px] right-6 flex flex-col gap-3 z-50">
+      <div className="fixed bottom-[100px] right-12 flex flex-col gap-5 z-50">
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/447407207196"
@@ -34,7 +34,7 @@ export const ScrollProvider = ({ children }) => {
 
         <a
           href="tel:+447407207196"
-          className="flex items-center justify-center w-14 h-14 rounded-full bg-slate-600 text-white shadow-lg hover:bg-slate-700 transition-all transform hover:scale-105"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-gray-900 text-white shadow-lg hover:bg-slate-700 transition-all transform hover:scale-105"
         >
           <FaPhoneAlt className="text-2xl" />
         </a>

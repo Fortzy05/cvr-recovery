@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
+
 
 const services = [
   "Car Recovery",
@@ -53,8 +55,9 @@ export default function Quote() {
     validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     Object.keys(formData).forEach((key) => validateField(key, formData[key]));
 
     if (
@@ -65,9 +68,37 @@ export default function Quote() {
       return;
     }
 
-    console.log("Form Data Submitted:", formData);
-    alert("Quote request submitted!");
+    try {
+      const response = await fetch("http://localhost:5000/api/quotes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("✅ Quote submitted successfully!");
+        setFormData({
+          fullName: "",
+          phoneNumber: "",
+          serviceRequired: "",
+          additionalInfo: "",
+        });
+      } else {
+        toast.error(
+          `❌ Failed to submit quote: ${result.error || "Unknown error"}`
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("❌ Network error while submitting quote");
+    }
+    
   };
+  
 
   return (
     <div className="w-full bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 flex justify-center">

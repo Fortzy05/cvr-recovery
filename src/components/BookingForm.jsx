@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
+// adjust path as needed
 
 function BookingForm() {
   const [formData, setFormData] = useState({
@@ -69,24 +71,46 @@ function BookingForm() {
     validateField(name, value);
   };
 
-  const handleSubmit = (e) => {
+ 
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    try {
+      const response = await fetch("http://localhost:5000/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Validate all fields before submitting
-    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+      const result = await response.json();
 
-    // Check if any errors exist
-    if (
-      Object.values(errors).some((error) => error) ||
-      Object.values(formData).some((val) => !val)
-    ) {
-      alert("Please correct the errors before submitting.");
-      return;
+      if (response.ok) {
+        toast.success("✅ Booking submitted successfully!");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          serviceType: "",
+          pickupLocation: "",
+          dropoffLocation: "",
+          vehicleDetails: "",
+        });
+      } else {
+        toast.error(
+          `❌ Failed to submit booking: ${result.error || "Unknown error"}`
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("❌ Network error while submitting booking");
     }
-
-    console.log("Booking Details:", formData);
-    alert("Booking request submitted!");
+    
+    
   };
+  
+
 
   return (
     <div className="max-w-lg mx-auto p-8 mt-10">
@@ -179,6 +203,27 @@ function BookingForm() {
               <p className="text-red-500 text-sm mt-1">{errors.serviceType}</p>
             )}
           </div>
+          {/* vehicle details */}
+          <div>
+            <label className="block text-gray-700 font-medium">
+              Vehicle Details
+            </label>
+            <input
+              type="text"
+              name="vehicleDetails"
+              value={formData.vehicleDetails}
+              onChange={handleChange}
+              required
+              className={`w-full px-4 py-2 border ${
+                errors.vehicleDetails ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
+            />
+            {errors.vehicleDetails && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.vehicleDetails}
+              </p>
+            )}
+          </div>
 
           {/** Pickup Location */}
           <div>
@@ -201,6 +246,26 @@ function BookingForm() {
               </p>
             )}
           </div>
+          <div>
+            <label className="block text-gray-700 font-medium">
+              Dropoff Location
+            </label>
+            <input
+              type="text"
+              name="dropoffLocation"
+              value={formData.dropoffLocation}
+              onChange={handleChange}
+              required
+              className={`w-full px-4 py-2 border ${
+                errors.dropoffLocation ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:ring focus:ring-yellow-500 outline-none`}
+            />
+            {errors.dropoffLocation && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.dropoffLocation}
+              </p>
+            )}
+          </div>
 
           {/** Submit Button */}
           <button
@@ -209,11 +274,11 @@ function BookingForm() {
               Object.values(errors).some((error) => error) ||
               Object.values(formData).some((val) => !val)
             }
-            className={`w-full py-3 rounded-lg font-semibold transition-all transform ${
+            className={`w-full bg-yellow-500 text-gray-900 py-3 rounded-md font-semibold transition-all ${
               Object.values(errors).some((error) => error) ||
               Object.values(formData).some((val) => !val)
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-slate-600 text-white hover:bg-slate-700 hover:scale-105"
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-yellow-400"
             }`}
           >
             Submit Booking

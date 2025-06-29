@@ -26,6 +26,8 @@ function HeroSlider() {
         modules={[Pagination, Autoplay]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
+        accent-color={"#000"}
+        loop={true}
         className="w-full h-[50vh] sm:h-[60vh] md:h-[463px]"
       >
         {heroImages.map((image, index) => (

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FooterSection() {
   return (
-    <div className="w-full bg-[#404040] py-10 px-6 text-white">
+    <div className="w-full bg-gray-950 py-10 px-6 text-white">
       <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center md:text-left">
         {/* Contact Section */}
         <div className="flex flex-col items-center md:items-start">

@@ -9,7 +9,7 @@ function Footer() {
       <FooterSection />
       <div className="bg-[#000000] overflow-hidden text-white text-center p-4">
         <p>
-          &copy; {currentYear} Edline Auto Limited | {}
+          &copy; {currentYear} Auto Sales Logistics Limited | {}
           <a href="/privacy" className="underline">
             Privacy Policy
           </a>
