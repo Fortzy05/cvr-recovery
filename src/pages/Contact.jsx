@@ -53,10 +53,12 @@ const Contact = () => {
 
     try {
       const response = await fetch(
-        "rapid-autorescue-backend.onrender.com/api/contact",
+        "https://rapid-autorescue-backend.onrender.com/api/contact",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+             "Content-Type": "application/json"
+             },
           body: JSON.stringify(formData),
         }
       );
@@ -70,8 +72,6 @@ const Contact = () => {
       toast.error("Failed to send message. Please try again later.");
     }
   };
-  
-  
 
   return (
     <div className="w-full">

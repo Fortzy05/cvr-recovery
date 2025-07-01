@@ -9,11 +9,42 @@ const app = express();
 const PORT = 5000;
 
 // ✅ Middleware
+// app.use(
+//   cors({
+//     origin: [
+//       "https://www.rapidautorescue.co.uk",
+//       "http://localhost:5173",
+//       "http://127.0.0.1:5173",
+//     ],
+//   })
+// );
+  
+
+
+// ✅ Allow all origins in development or define multiple origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://www.rapidautorescue.co.uk",
+];
+
 app.use(
   cors({
-    origin: "https://www.rapidautorescue.co.uk",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like curl or mobile apps)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("CORS policy blocked this origin"), false);
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
+
   
 app.use(express.json());
 

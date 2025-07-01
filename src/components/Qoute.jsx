@@ -70,7 +70,7 @@ export default function Quote() {
 
     try {
       const response = await fetch(
-        "rapid-autorescue-backend.onrender.com/api/quotes",
+        "https://rapid-autorescue-backend.onrender.com/api/quotes",
         {
           method: "POST",
           headers: {

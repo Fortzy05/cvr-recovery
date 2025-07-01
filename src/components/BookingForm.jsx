@@ -74,20 +74,32 @@ function BookingForm() {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const API = import.meta.env.VITE_API_BASE_URL;
-    
+    // Re-validate all fields before submission
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+
+    if (
+      Object.values(errors).some((error) => error) ||
+      Object.values(formData).some((val) => !val)
+    ) {
+      toast.error("Please fix the errors before submitting.");
+      return;
+    }
+
     try {
-      const response = await fetch(`${API}/api/bookings`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://rapid-autorescue-backend.onrender.com/api/bookings",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
-
+      
+      if (!response.ok) throw new Error("Something went wrong");
       if (response.ok) {
         toast.success("✅ Booking submitted successfully!");
         setFormData({
@@ -108,8 +120,6 @@ function BookingForm() {
       console.error(err);
       toast.error("❌ Network error while submitting booking");
     }
-    
-    
   };
   
 

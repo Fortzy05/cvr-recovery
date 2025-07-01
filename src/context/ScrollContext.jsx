@@ -21,7 +21,7 @@ export const ScrollProvider = ({ children }) => {
       {children}
 
       {/* Floating Buttons (Always Visible) */}
-      <div className="fixed bottom-[100px] right-12 flex flex-col gap-5 z-50">
+      <div className="fixed bottom-[100px] md:right-12 right-6 flex flex-col gap-5 z-50">
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/447407207196"
