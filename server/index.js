@@ -9,8 +9,15 @@ const app = express();
 const PORT = 5000;
 
 // ✅ Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://www.rapidautorescue.co.uk",
+  })
+);
+  
 app.use(express.json());
+
+
 
 // ✅ Setup Sanity client
 const sanity = createClient({
@@ -172,9 +179,16 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-// ✅ Send Email Notification
+app.get("/", (req, res) => {
+  res.send("🚀 Rapid Auto Rescue API is running!");
+});
 
-// ✅ Start server
+app.get("/api/bookings", (req, res) => {
+  res.send("✅ Booking API is alive");
+});
+  
+  
+
 app.listen(PORT, () => {
   console.log(`Booking API server running on http://localhost:${PORT}`);
 });

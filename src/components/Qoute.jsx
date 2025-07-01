@@ -69,13 +69,16 @@ export default function Quote() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/quotes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "rapid-autorescue-backend.onrender.com/api/quotes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       const result = await response.json();
 
